@@ -13,13 +13,19 @@ test('adds 14 + 9 to equal 23', () => {
 
 
 
-test ("10 euros to dollar",() => { 
-    const expected = 10 * 1.07;
-})
-test(" 10 dollars to yen", () => {
-    const expected = (10 / 1.07) * 156.5;
-});
 
-test("1000 yen to pounds", () => {
-    const expected = (1000 / 156.5) * 0.87;
-});
+test ("one euro should be 1.07 dollars", function(){
+    const {fromEuroToDollar} = require ("./app.js") 
+    expect (fromEuroToDollar(3.5)).toBe(3.745);
+})
+
+test ("1.07 dollar should be 156.5 yen", function(){
+    const {fromDollarToYen} = require ("./app.js")
+    expect (fromDollarToYen(3.5)).toBe(511.915888);
+})
+
+
+test("156.5 yen should be 0.87 pound", function(){
+    const {fromYenToPound} = require ("./app.js")
+    expect (fromYenToPound(3.5)).toBe(0.01945687)
+})
